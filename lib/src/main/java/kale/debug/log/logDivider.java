@@ -1,4 +1,4 @@
-package kale.debug.logcat;
+package kale.debug.log;
 
 import android.app.Activity;
 import android.content.Intent;
