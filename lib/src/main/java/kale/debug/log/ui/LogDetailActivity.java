@@ -33,9 +33,10 @@ public class LogDetailActivity extends AppCompatActivity {
         }
         TextView detailTv = (TextView) findViewById(R.id.log_detail_tv);
         LogBean log = (LogBean) intent.getSerializableExtra(KEY_MESSAGE);
-        detailTv.append(log.time + "\n\n");
-        detailTv.append(log.lev + "\n\n");
-        detailTv.append(log.tag + "\n\n");
-        detailTv.append(log.msg);
+        assert detailTv != null;
+        detailTv.append("Time：" + "\n" + log.time + "\n\n");
+        detailTv.append("Lev：" + "\n" + log.lev + "\n\n");
+        detailTv.append("Tag：" + "\n" + log.tag + "\n\n");
+        detailTv.append("Message：" + "\n" + log.msg);
     }
 }
