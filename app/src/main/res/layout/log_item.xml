@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    >
+    
+    <TextView
+        android:id="@+id/lev_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#aaaaaa"
+        android:textSize="12sp"
+        tools:text="lev"
+        />
+
+    <TextView
+        android:id="@+id/category_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="#aaaaaa"
+        android:textSize="12sp"
+        tools:text="category"
+        />
+    
+    <TextView
+        android:id="@+id/msg_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lev_tv"
+        android:maxLines="3"
+        android:textSize="14sp"
+        tools:text="msg"
+        />
+
+    <TextView
+        android:id="@+id/tag_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/msg_tv"
+        android:textColor="#aaaaaa"
+        android:textSize="12sp"
+        tools:text="tag"
+        />
+
+    <TextView
+        android:id="@+id/time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/msg_tv"
+        android:layout_alignParentRight="true"
+        android:textColor="#aaaaaa"
+        android:textSize="12sp"
+        tools:text="time"
+        />
+
+</RelativeLayout>
