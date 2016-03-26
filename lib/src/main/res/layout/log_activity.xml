@@ -24,7 +24,7 @@
         android:id="@+id/log_tl"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        app:tabMode="scrollable"
+        android:background="@android:color/darker_gray"
         />
 
     <RelativeLayout
