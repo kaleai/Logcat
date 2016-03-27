@@ -28,7 +28,7 @@ public class LogParser {
     ///////////////////////////////////////////////////////////////////////////
     // lev
     ///////////////////////////////////////////////////////////////////////////
-    
+
     public static final String VERBOSE = "V"; //   Verbose (明细)  
 
     public static final String DEBUG = "D"; //     Debug (调试)
@@ -45,43 +45,45 @@ public class LogParser {
 
     @CheckResult
     public static String parse(Options options) {
-        if (options == Options.SILENT) {
-            return SILENT;
-        } else if (options == Options.FILE) {
-            return FILE;
-        } else if (options == Options.BYTES) {
-            return BYTES;
-        } else if (options == Options.COUNT) {
-            return COUNT;
-        } else if (options == Options.FORMAT) {
-            return FORMAT;
-        } else if (options == Options.CLEAR) {
-            return CLEAR;
-        } else if (options == Options.DUMP) {
-            return DUMP;
-        } else {
-            return DUMP;
+        switch (options) {
+            case SILENT:
+                return SILENT;
+            case FILE:
+                return FILE;
+            case BYTES:
+                return BYTES;
+            case COUNT:
+                return COUNT;
+            case FORMAT:
+                return FORMAT;
+            case CLEAR:
+                return CLEAR;
+            case DUMP:
+                //return DUMP;
+            default:
+                return DUMP;
         }
     }
 
     @CheckResult
     public static String parse(Level level) {
-        if (level == Level.VERBOSE) {
-            return VERBOSE;
-        } else if (level == Level.DEBUG) {
-            return DEBUG;
-        } else if (level == Level.INFO) {
-            return INFO;
-        } else if (level == Level.WARN) {
-            return WARN;
-        } else if (level == Level.ERROR) {
-            return ERROR;
-        } else if (level == Level.FATAL) {
-            return FATAL;
-        } else if (level == Level.ASSERT) {
-            return ASSERT;
-        } else {
-            return ASSERT;
+        switch (level) {
+            case VERBOSE:
+                return VERBOSE;
+            case DEBUG:
+                return DEBUG;
+            case INFO:
+                return INFO;
+            case WARN:
+                return WARN;
+            case ERROR:
+                return ERROR;
+            case FATAL:
+                return FATAL;
+            case ASSERT:
+                //return ASSERT;
+            default:
+                return ASSERT;
         }
     }
 

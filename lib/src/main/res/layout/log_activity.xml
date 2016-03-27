@@ -1,54 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
 
-    <EditText
-        android:id="@+id/log_et"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:singleLine="true"
-        android:textColor="@android:color/white"
-        android:background="#222222"
-        android:hint="Please input a tag."
-        android:textColorHint="#636363"
-        />
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/log_tl"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@android:color/darker_gray"
-        />
-
-    <RelativeLayout
+    <android.support.v4.view.ViewPager
+        android:id="@+id/log_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/log_vp"
+        <android.support.v4.view.PagerTitleStrip
+            android:id="@+id/main_pts"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
             />
+    </android.support.v4.view.ViewPager>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/clear_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="5dp"
-            android:src="@android:drawable/ic_menu_delete"
-            />
+    <EditText
+        android:id="@+id/log_et"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:hint="Please input a tag."
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        />
 
-    </RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/clear_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="5dp"
+        android:src="@android:drawable/ic_menu_delete"
+        />
 
-</LinearLayout>
+</FrameLayout>

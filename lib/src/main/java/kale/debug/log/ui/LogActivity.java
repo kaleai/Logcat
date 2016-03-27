@@ -2,9 +2,9 @@ package kale.debug.log.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -14,9 +14,9 @@ import android.widget.EditText;
 import java.util.ArrayList;
 import java.util.List;
 
+import kale.debug.log.LogCat;
 import kale.debug.log.LogParser;
 import kale.debug.log.R;
-import kale.debug.log.LogCat;
 import kale.debug.log.util.TextWatcherAdapter;
 
 
@@ -28,8 +28,6 @@ public class LogActivity extends AppCompatActivity {
             LogParser.INFO,
             LogParser.WARN,
             LogParser.ERROR};
-
-    private TabLayout tabLayout;
 
     private EditText tagEt;
 
@@ -45,10 +43,11 @@ public class LogActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        tabLayout = (TabLayout) findViewById(R.id.log_tl);
         mainVp = (ViewPager) findViewById(R.id.log_vp);
         tagEt = (EditText) findViewById(R.id.log_et);
         clearBtn = findViewById(R.id.clear_btn);
+        PagerTitleStrip mainPts = (PagerTitleStrip) findViewById(R.id.main_pts);
+        mainPts.setTextColor(getResources().getColor(android.R.color.white));
         setViews();
     }
 
@@ -62,7 +61,7 @@ public class LogActivity extends AppCompatActivity {
 
             @Override
             public CharSequence getPageTitle(int position) {
-                return TITLES[position];
+                return LogParser.parseLev(TITLES[position]).toString();
             }
 
             @Override
@@ -77,26 +76,23 @@ public class LogActivity extends AppCompatActivity {
         };
         mainVp.setAdapter(adapter);
         mainVp.setOffscreenPageLimit(TITLES.length);
-
-        tabLayout.setupWithViewPager(mainVp);
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        mainVp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                mainVp.setCurrentItem(position);
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                
+            }
+
+            @Override
+            public void onPageSelected(int position) {
                 updateLog(fragments.get(position));
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                // refresh log
-                updateLog(fragments.get(tab.getPosition()));
-            }
+            public void onPageScrollStateChanged(int state) {
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
             }
         });
+
         tagEt.addTextChangedListener(new TextWatcherAdapter() {
 
             @Override
