@@ -22,7 +22,7 @@ repositories {
 >  compile 'com.github.tianzhijiexian:Logcat:[Latest release](https://github.com/tianzhijiexian/Logcat/releases)'
 
 ###More Detail  
-You can see more detail in
+You can see more detail in [Logcat.java](https://github.com/tianzhijiexian/Logcat/blob/master/lib/src/main/java/kale/debug/log/LogCat.java)
 
 ### Developer   
 ![](https://avatars3.githubusercontent.com/u/9552155?v=3&s=460)
