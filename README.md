@@ -3,7 +3,7 @@
 logcat tool   
 ---
 ###Demo   
-![](./images/log.gif)
+![](./images/demo01.png)
 
 ###Usage   
 ```JAVA
