@@ -19,7 +19,7 @@ repositories {
 }
 ```   
 2. Add the dependency   
->  compile 'com.github.tianzhijiexian:Logcat:[Latest release](https://github.com/tianzhijiexian/Logcat/releases)'
+compile 'com.github.tianzhijiexian:Logcat:[Latest release](https://github.com/tianzhijiexian/Logcat/releases)'
 
 ###More Detail  
 You can see more detail in [Logcat.java](https://github.com/tianzhijiexian/Logcat/blob/master/lib/src/main/java/kale/debug/log/LogCat.java)
