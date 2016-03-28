@@ -18,7 +18,7 @@ repositories {
 	}
 }
 ```   
-Add the dependency    
+Add the dependency:     
 > compile 'com.github.tianzhijiexian:Logcat:[Latest release](https://github.com/tianzhijiexian/Logcat/releases)'
 
 ###More Detail  
