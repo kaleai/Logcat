@@ -1,7 +1,6 @@
 package kale.debug.log;
 
 import android.os.AsyncTask;
-import android.support.annotation.Nullable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -52,8 +51,7 @@ public class LogLoader {
 
     public interface LoadHandler {
 
-        @Nullable
-        String handLine(String line);
+        void handLine(String line);
 
         void onComplete();
     }

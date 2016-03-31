@@ -13,17 +13,16 @@ import java.util.List;
 import kale.debug.log.util.Level;
 import kale.debug.log.util.Options;
 
-
 /**
  * @author Jack Tony
  * @date 2015/12/4
  */
 public class LogCat {
 
-    private static final List<String> EMPTY_COMMAND = new ArrayList<>();
+    private static final List<String> DEFAULT_COMMAND = new ArrayList<>();
 
     static {
-        EMPTY_COMMAND.add("logcat");
+        DEFAULT_COMMAND.add("logcat");
     }
 
     private List<String> commandLine;
@@ -38,7 +37,7 @@ public class LogCat {
     }
 
     private LogCat() {
-        commandLine = new ArrayList<>(EMPTY_COMMAND);
+        commandLine = new ArrayList<>(DEFAULT_COMMAND);
     }
 
     public LogCat options(Options options) {
@@ -100,7 +99,7 @@ public class LogCat {
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
-            commandLine = new ArrayList<>(EMPTY_COMMAND);
+            commandLine = new ArrayList<>(DEFAULT_COMMAND);
         }
         return exec;
     }

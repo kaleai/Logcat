@@ -7,7 +7,5 @@
     <color name="red">#c0392b</color>
 
     <color name="colorPrimary">#cf3737</color>
-
-    <style name="FakeTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
-
+    <color name="colorAccent">#FF4081</color>
 </resources>
