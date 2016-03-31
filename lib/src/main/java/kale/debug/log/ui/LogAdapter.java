@@ -19,7 +19,7 @@ import kale.debug.log.util.Level;
  * @author Kale
  * @date 2016/3/25
  */
-public class Adapter extends BaseAdapter {
+public class LogAdapter extends BaseAdapter {
 
     public static final Map<Level, Integer> LEV_MAP = new ArrayMap<>();
 
@@ -39,7 +39,7 @@ public class Adapter extends BaseAdapter {
 
     private Resources resources;
 
-    public Adapter(List<LogBean> data) {
+    public LogAdapter(List<LogBean> data) {
         this.data = data;
     }
 
@@ -80,15 +80,22 @@ public class Adapter extends BaseAdapter {
 
         LogBean log = data.get(position);
 
-        holder.tag.setText(log.tag);
-        holder.msg.setText(log.msg);
+        setText(holder.tag, log.tag);
+        setText(holder.msg, log.msg);
 
         holder.lev.setTextColor(resources.getColor(LEV_MAP.get(log.lev)));
         holder.lev.setText(log.lev.toString());
 
-        holder.time.setText(log.time);
+        setText(holder.time, log.time);
 
         return convertView;
+    }
+
+    public static void setText(TextView textView, String text) {
+        if (text == null) {
+            text = "null";
+        }
+        textView.setText(text);
     }
 
     private class ViewHolder {

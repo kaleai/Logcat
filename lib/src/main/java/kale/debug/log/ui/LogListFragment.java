@@ -97,7 +97,7 @@ public class LogListFragment extends Fragment {
                 startActivity(LogDetailActivity.withIntent(getActivity(), data.get(position)));
             }
         });
-        listView.setAdapter(new Adapter(data));
+        listView.setAdapter(new LogAdapter(data));
     }
 
     /**
@@ -134,7 +134,7 @@ public class LogListFragment extends Fragment {
 
         @Override
         public void onComplete() {
-            Adapter adapter = (Adapter) listView.getAdapter();
+            LogAdapter adapter = (LogAdapter) listView.getAdapter();
             adapter.notifyDataSetChanged();
             stopLoading(!adapter.isEmpty());
         }
