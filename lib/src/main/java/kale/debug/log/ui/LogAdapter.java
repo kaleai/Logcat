@@ -80,22 +80,15 @@ public class LogAdapter extends BaseAdapter {
 
         LogBean log = data.get(position);
 
-        setText(holder.tag, log.tag);
-        setText(holder.msg, log.msg);
+        holder.tag.setText(log.tag);
+        holder.msg.setText(log.msg);
 
         holder.lev.setTextColor(resources.getColor(LEV_MAP.get(log.lev)));
         holder.lev.setText(log.lev.toString());
 
-        setText(holder.time, log.time);
+        holder.time.setText(log.time);
 
         return convertView;
-    }
-
-    public static void setText(TextView textView, String text) {
-        if (text == null) {
-            text = "null";
-        }
-        textView.setText(text);
     }
 
     private class ViewHolder {
