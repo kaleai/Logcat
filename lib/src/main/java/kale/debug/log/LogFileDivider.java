@@ -91,11 +91,11 @@ public class LogFileDivider {
         return String.format(Locale.US, pattern, currentDate, LOG_FILE_END);
     }
 
-    public static void sendEmail(final Activity activity, final String userName, final String subject, String filePath) {
+    public static void sendEmail(final Activity activity, String address,final String title, final String subject, String filePath) {
         Intent intent = new Intent(Intent.ACTION_SEND);
-        String[] tos = {"developer_kale@foxmail.com"};
+        String[] tos = {address};
         intent.putExtra(Intent.EXTRA_EMAIL, tos);
-        intent.putExtra(Intent.EXTRA_TEXT, userName);
+        intent.putExtra(Intent.EXTRA_TEXT, title);
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
 
         intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///" + filePath));
@@ -103,6 +103,13 @@ public class LogFileDivider {
         intent.setType("message/rfc882");
         Intent.createChooser(intent, "Choose Email Client");
         activity.startActivity(intent);
+    }
+
+    public static void shareFile(Activity activity,File file) {
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setType("text/plain");
+        sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+        activity.startActivity(sendIntent);
     }
 
 }

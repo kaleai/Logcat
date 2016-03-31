@@ -1,8 +1,6 @@
 package kale.debug.log.ui;
 
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -182,11 +180,7 @@ public class LogListFragment extends Fragment {
                 if (file == null) {
                     return;
                 }
-
-                Intent sendIntent = new Intent(Intent.ACTION_SEND);
-                sendIntent.setType("text/plain");
-                sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-                startActivity(sendIntent);
+                LogFileDivider.shareFile(getActivity(),file);
             }
         });
     }

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class LogActivity extends AppCompatActivity {
 
     private ViewPager mainVp;
 
-    private View clearBtn;
+    private ImageButton clearImBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class LogActivity extends AppCompatActivity {
 
         mainVp = (ViewPager) findViewById(R.id.log_vp);
         tagEt = (EditText) findViewById(R.id.log_et);
-        clearBtn = findViewById(R.id.clear_btn);
+        clearImBtn = (ImageButton) findViewById(R.id.clear_log_ibtn);
         PagerTitleStrip mainPts = (PagerTitleStrip) findViewById(R.id.main_pts);
         mainPts.setTextColor(getResources().getColor(android.R.color.white));
         setViews();
@@ -101,7 +102,7 @@ public class LogActivity extends AppCompatActivity {
             }
         });
 
-        clearBtn.setOnClickListener(new View.OnClickListener() {
+        clearImBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LogCat.getInstance().clear().commit();

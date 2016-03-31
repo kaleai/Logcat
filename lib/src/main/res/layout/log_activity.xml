@@ -34,14 +34,14 @@
         />
 
     <ImageButton
-        android:id="@+id/clear_btn"
+        android:id="@+id/clear_log_ibtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="5dp"
+        android:background="@drawable/btn_oval_shape"
         android:padding="12dp"
         android:src="@android:drawable/ic_menu_delete"
-        android:background="@drawable/btn_oval_shape"
         />
 
 </FrameLayout>
