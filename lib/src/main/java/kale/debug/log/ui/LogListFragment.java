@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kale.debug.log.LogCat;
-import kale.debug.log.LogDivider;
+import kale.debug.log.LogFileDivider;
 import kale.debug.log.LogLoader;
 import kale.debug.log.LogParser;
 import kale.debug.log.R;
@@ -178,7 +178,7 @@ public class LogListFragment extends Fragment {
 
             @Override
             public void onComplete() {
-                File file = LogDivider.saveFile(sb.toString());
+                File file = LogFileDivider.saveFile(sb.toString());
                 if (file == null) {
                     return;
                 }

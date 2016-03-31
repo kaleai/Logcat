@@ -14,7 +14,7 @@ import java.util.Locale;
  * @author Jack Tony
  * @date 2015/12/8
  */
-public class LogDivider {
+public class LogFileDivider {
 
     private static final String LOG_FILE_END = ".log";
 
