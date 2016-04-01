@@ -62,7 +62,7 @@ public class LogListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.log_fragment, container, false);
+        View root = inflater.inflate(R.layout.kale_log_fragment, container, false);
         shareBtn = root.findViewById(R.id.share_btn);
         lev = LogParser.parseLev(getArguments().getString(KEY_LEV, LogParser.VERBOSE));
         loadingPb = (ProgressBar) root.findViewById(R.id.loading_pb);

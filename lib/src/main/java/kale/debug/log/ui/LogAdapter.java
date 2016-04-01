@@ -67,7 +67,7 @@ public class LogAdapter extends BaseAdapter {
 
         final ViewHolder holder;
         if (convertView == null) {
-            convertView = inflate.inflate(R.layout.log_item, parent, false);
+            convertView = inflate.inflate(R.layout.kale_log_item, parent, false);
             holder = new ViewHolder();
             holder.tag = (TextView) convertView.findViewById(R.id.tag_tv);
             holder.lev = (TextView) convertView.findViewById(R.id.lev_tv);

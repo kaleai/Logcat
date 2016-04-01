@@ -39,7 +39,7 @@ public class LogActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.log_activity);
+        setContentView(R.layout.kale_log_activity);
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }

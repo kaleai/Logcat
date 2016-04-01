@@ -26,7 +26,7 @@ public class LogDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.log_detail_activity);
+        setContentView(R.layout.kale_log_detail_activity);
         Intent intent = getIntent();
         if (intent == null) {
             return;

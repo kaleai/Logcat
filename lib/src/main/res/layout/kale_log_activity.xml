@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="5dp"
-        android:background="@drawable/btn_oval_shape"
+        android:background="@drawable/kale_btn_oval_shape"
         android:padding="12dp"
         android:src="@android:drawable/ic_menu_delete"
         />

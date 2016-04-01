@@ -42,7 +42,7 @@
         android:layout_marginRight="5dp"
         android:text="share"
         android:src="@android:drawable/ic_menu_share"
-        android:background="@drawable/btn_oval_shape"
+        android:background="@drawable/kale_btn_oval_shape"
         />
 
 </FrameLayout>
