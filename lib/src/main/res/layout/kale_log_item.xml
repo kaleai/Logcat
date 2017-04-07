@@ -7,7 +7,7 @@
     android:paddingTop="6dp"
     >
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -17,52 +17,37 @@
 
         <TextView
             android:id="@+id/tag_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textColor="#aaaaaa"
             android:textSize="12sp"
             tools:text="tag"
-            />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             />
 
         <TextView
             android:id="@+id/time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_gravity="right"
             android:textColor="#aaaaaa"
             android:textSize="12sp"
             tools:text="time"
             />
-        
-        <TextView
-            android:id="@+id/lev_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:textColor="#aaaaaa"
-            android:textSize="12sp"
-            tools:text="lev"
-            />
 
-    </LinearLayout>
-
+    </FrameLayout>
 
     <TextView
         android:id="@+id/msg_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
         android:ellipsize="end"
         android:maxLines="2"
+        android:paddingLeft="10dp"
         android:textSize="14sp"
         tools:text="message"
         />
-
 
 </LinearLayout>

@@ -1,17 +1,17 @@
 package kale.debug.log;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.support.annotation.CheckResult;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import kale.debug.log.util.Level;
-import kale.debug.log.util.Options;
+import kale.debug.log.constant.Level;
+import kale.debug.log.constant.Options;
 
 /**
  * @author Jack Tony

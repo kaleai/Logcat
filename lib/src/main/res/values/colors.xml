@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="gray">#717171</color>
     <color name="blue">#2980b9</color>
     <color name="green">#27ae60</color>
     <color name="yellow">#f39c12</color>
@@ -8,4 +7,8 @@
 
     <color name="colorPrimary">#cf3737</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="gray">#222222</color>
+    <color name="gray_light">#717171</color>
+    <color name="gray_alpha">#ee212121</color>
 </resources>

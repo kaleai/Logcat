@@ -3,17 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     >
 
     <TextView
-        android:id="@+id/empty_tv"
+        android:id="@+id/empty_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:orientation="vertical"
         android:text="No Data"
+        android:textColor="@android:color/white"
         android:textSize="20sp"
         android:visibility="invisible"
-        tools:visibility="visible"
         />
 
     <ProgressBar
@@ -30,19 +32,6 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         android:singleLine="false"
-        />
-
-    <ImageView
-        android:id="@+id/share_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:padding="10dp"
-        android:layout_marginBottom="70dp"
-        android:layout_marginRight="5dp"
-        android:text="share"
-        android:src="@android:drawable/ic_menu_share"
-        android:background="@drawable/kale_btn_oval_shape"
         />
 
 </FrameLayout>

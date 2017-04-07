@@ -1,47 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.view.ViewPager android:id="@+id/log_vp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     >
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/log_vp"
+    <android.support.v4.view.PagerTitleStrip
+        android:id="@+id/main_pts"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <android.support.v4.view.PagerTitleStrip
-            android:id="@+id/main_pts"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/colorPrimary"
-            />
-    </android.support.v4.view.ViewPager>
-
-    <EditText
-        android:id="@+id/log_et"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@android:color/transparent"
-        android:hint="Please input a tag."
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:singleLine="true"
-        android:textColor="@android:color/white"
+        android:layout_height="22dp"
+        android:background="@color/colorPrimary"
         />
-
-    <ImageButton
-        android:id="@+id/clear_log_ibtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="5dp"
-        android:background="@drawable/kale_btn_oval_shape"
-        android:padding="12dp"
-        android:src="@android:drawable/ic_menu_delete"
-        />
-
-</FrameLayout>
+</android.support.v4.view.ViewPager>

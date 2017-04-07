@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import kale.debug.log.ui.LogActivity;
+import kale.debug.log.ui.DebugLogActivity;
 import kale.debug.logcat.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,18 +18,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
+        Log.e(TAG, "onCreate: first create");
+        
         printLog();
 
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                printLog();
-
-                startActivity(new Intent(MainActivity.this, LogActivity.class));
+//                printLog();
+                startActivity(new Intent(MainActivity.this, DebugLogActivity.class));
             }
         });
 
-        startActivity(new Intent(this, LogActivity.class));
+        startActivity(new Intent(this, DebugLogActivity.class));
     }
 
     private void printLog() {

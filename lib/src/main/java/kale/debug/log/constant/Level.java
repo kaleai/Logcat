@@ -1,4 +1,4 @@
-package kale.debug.log.util;
+package kale.debug.log.constant;
 
 /**
  * @author Kale

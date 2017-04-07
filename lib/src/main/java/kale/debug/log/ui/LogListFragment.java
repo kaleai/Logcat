@@ -1,10 +1,11 @@
 package kale.debug.log.ui;
 
-import android.content.DialogInterface;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,20 +13,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import kale.debug.log.LogCat;
-import kale.debug.log.LogFileDivider;
 import kale.debug.log.LogLoader;
 import kale.debug.log.LogParser;
 import kale.debug.log.R;
+import kale.debug.log.constant.Level;
+import kale.debug.log.constant.Options;
 import kale.debug.log.model.LogBean;
-import kale.debug.log.util.Level;
-import kale.debug.log.util.Options;
+import kale.debug.log.util.LogBeanUtil;
 
 /**
  * @author Jack Tony
@@ -41,63 +37,52 @@ public class LogListFragment extends Fragment {
 
     private ProgressBar loadingPb;
 
-    private TextView emptyTv;
-
     private final List<LogBean> data = new ArrayList<>();
 
     private String tag;
 
     private Level lev;
 
-    private View shareBtn;
-
     public static LogListFragment getInstance(String lev) {
         Bundle bundle = new Bundle();
         bundle.putString(KEY_LEV, lev);
+
         LogListFragment fragment = new LogListFragment();
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        lev = LogParser.parseLev(getArguments().getString(KEY_LEV, LogParser.VERBOSE));
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.kale_log_fragment, container, false);
-        shareBtn = root.findViewById(R.id.share_btn);
-        lev = LogParser.parseLev(getArguments().getString(KEY_LEV, LogParser.VERBOSE));
         loadingPb = (ProgressBar) root.findViewById(R.id.loading_pb);
-        emptyTv = (TextView) root.findViewById(R.id.empty_tv);
         listView = (ListView) root.findViewById(R.id.log_lv);
+        listView.setEmptyView(root.findViewById(R.id.empty_view));
 
-        setViews();
         updateLog(null);
-        return root;
-    }
-
-    public void setViews() {
-        shareBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(getActivity())
-                        .setTitle("Share Log File")
-                        .setMessage("Share log by other client?")
-                        .setNegativeButton("Close", null)
-                        .setPositiveButton("Share", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                shareLogFile();
-                            }
-                        }).create().show();
-            }
-        });
-
+        listView.setAdapter(new LogAdapter(data));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 startActivity(LogDetailActivity.withIntent(getActivity(), data.get(position)));
             }
         });
-        listView.setAdapter(new LogAdapter(data));
+        return root;
+    }
+
+    private LogBean oldLogBean;
+
+    public void clearData() {
+        data.clear();
+        LogAdapter adapter = (LogAdapter) listView.getAdapter();
+        adapter.notifyDataSetChanged();
     }
 
     /**
@@ -111,7 +96,8 @@ public class LogListFragment extends Fragment {
             return;
         }
         this.tag = tag;
-        startLoading();
+        loadingPb.setVisibility(View.VISIBLE);
+
         data.clear();
         Process process = LogCat.getInstance()
                 .options(Options.DUMP)
@@ -120,67 +106,25 @@ public class LogListFragment extends Fragment {
                 .filter(tag, lev)
                 .commit();
 
-        LogLoader.load(process, handler);
-    }
-
-    private LogLoader.LoadHandler handler = new LogLoader.LoadHandler() {
-        @Override
-        public void handLine(String line) {
-            LogBean logBean = getLogBean(line);
-            if (logBean != null) {
-                data.add(logBean);
-            }
-        }
-
-        @Override
-        public void onComplete() {
-            LogAdapter adapter = (LogAdapter) listView.getAdapter();
-            adapter.notifyDataSetChanged();
-            stopLoading(!adapter.isEmpty());
-        }
-    };
-
-    @Nullable
-    private LogBean getLogBean(String line) {
-        LogBean logBean = new LogBean();
-        int tagStart = line.indexOf("/");
-        int msgStart = line.indexOf("):");
-
-        if (msgStart == -1 || tagStart == -1) {
-            return null;
-        }
-
-        logBean.tag = line.substring(tagStart + 1, msgStart + 1);
-        logBean.msg = line.substring(msgStart + 2);
-        String lev = line.substring(tagStart - 1, tagStart);
-
-        logBean.lev = LogParser.parseLev(lev);
-        logBean.time = line.substring(0, tagStart - 2);
-        return logBean;
-    }
-
-    private void shareLogFile() {
-        Process process = LogCat.getInstance()
-                .options(Options.DUMP)
-                .withTime()
-                .recentLines(1000)
-                .filter(tag, lev)
-                .commit();
-
-        final StringBuilder sb = new StringBuilder();
         LogLoader.load(process, new LogLoader.LoadHandler() {
             @Override
             public void handLine(String line) {
-                sb.append(line).append("\n");
+                LogBean logBean = LogBeanUtil.createBeanFromLine(line);
+                if (logBean != null) {
+                    if (oldLogBean != null && logBean.msg.startsWith(" \tat ")) {
+                        oldLogBean.msg += "\n" + logBean.msg;
+                    } else {
+                        oldLogBean = logBean;
+                        data.add(logBean);
+                    }
+                }
             }
 
             @Override
             public void onComplete() {
-                File file = LogFileDivider.saveFile(sb.toString());
-                if (file == null) {
-                    return;
-                }
-                LogFileDivider.shareFile(getActivity(),file);
+                LogAdapter adapter = (LogAdapter) listView.getAdapter();
+                loadingPb.setVisibility(View.INVISIBLE);
+                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -190,18 +134,14 @@ public class LogListFragment extends Fragment {
         super.onDestroyView();
         listView = null;
         loadingPb = null;
-        emptyTv = null;
     }
 
-    private void startLoading() {
-        loadingPb.setVisibility(View.VISIBLE);
-        emptyTv.setVisibility(View.INVISIBLE);
+    public String getLogTag() {
+        return tag;
     }
 
-    private void stopLoading(boolean hasData) {
-        loadingPb.setVisibility(View.INVISIBLE);
-        if (!hasData) {
-            emptyTv.setVisibility(View.VISIBLE);
-        }
+    public Level getLogLev() {
+        return lev;
     }
+
 }

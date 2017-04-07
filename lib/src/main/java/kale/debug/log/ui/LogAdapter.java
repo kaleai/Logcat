@@ -1,5 +1,8 @@
 package kale.debug.log.ui;
 
+import java.util.List;
+import java.util.Map;
+
 import android.content.res.Resources;
 import android.support.v4.util.ArrayMap;
 import android.view.LayoutInflater;
@@ -8,12 +11,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.List;
-import java.util.Map;
-
 import kale.debug.log.R;
 import kale.debug.log.model.LogBean;
-import kale.debug.log.util.Level;
+import kale.debug.log.constant.Level;
 
 /**
  * @author Kale
@@ -24,7 +24,7 @@ public class LogAdapter extends BaseAdapter {
     public static final Map<Level, Integer> LEV_MAP = new ArrayMap<>();
 
     static {
-        LEV_MAP.put(Level.VERBOSE, R.color.gray);
+        LEV_MAP.put(Level.VERBOSE, R.color.gray_light);
         LEV_MAP.put(Level.DEBUG, R.color.blue);
         LEV_MAP.put(Level.INFO, R.color.green);
         LEV_MAP.put(Level.WARN, R.color.yellow);
@@ -70,7 +70,6 @@ public class LogAdapter extends BaseAdapter {
             convertView = inflate.inflate(R.layout.kale_log_item, parent, false);
             holder = new ViewHolder();
             holder.tag = (TextView) convertView.findViewById(R.id.tag_tv);
-            holder.lev = (TextView) convertView.findViewById(R.id.lev_tv);
             holder.msg = (TextView) convertView.findViewById(R.id.msg_tv);
             holder.time = (TextView) convertView.findViewById(R.id.time_tv);
             convertView.setTag(holder);
@@ -83,8 +82,7 @@ public class LogAdapter extends BaseAdapter {
         holder.tag.setText(log.tag);
         holder.msg.setText(log.msg);
 
-        holder.lev.setTextColor(resources.getColor(LEV_MAP.get(log.lev)));
-        holder.lev.setText(log.lev.toString());
+        holder.msg.setTextColor(resources.getColor(LEV_MAP.get(log.lev)));
 
         holder.time.setText(log.time);
 
@@ -93,6 +91,6 @@ public class LogAdapter extends BaseAdapter {
 
     private class ViewHolder {
 
-        TextView tag, msg, lev, time;
+        TextView tag, msg, time;
     }
 }

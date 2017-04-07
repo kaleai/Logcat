@@ -1,9 +1,9 @@
-package kale.debug.log.util;
+package kale.debug.log.constant;
 
 /**
  * @author Kale
  * @date 2016/3/25
  */
-public enum  Options {
+public enum Options {
     SILENT, FILE, BYTES, COUNT, FORMAT, CLEAR, DUMP
 }

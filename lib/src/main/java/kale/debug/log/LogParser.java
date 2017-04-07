@@ -2,8 +2,8 @@ package kale.debug.log;
 
 import android.support.annotation.CheckResult;
 
-import kale.debug.log.util.Level;
-import kale.debug.log.util.Options;
+import kale.debug.log.constant.Level;
+import kale.debug.log.constant.Options;
 
 /**
  * @author Kale

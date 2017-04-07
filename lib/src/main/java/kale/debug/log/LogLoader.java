@@ -1,10 +1,10 @@
 package kale.debug.log;
 
-import android.os.AsyncTask;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import android.os.AsyncTask;
 
 /**
  * @author Kale
@@ -23,7 +23,7 @@ public class LogLoader {
                     //  Runtime.runFinalizersOnExit(true);
                     String line;
                     while ((line = bufferedReader.readLine()) != null) {
-                        //清理日志，如果你这里做了sout，那么你输出的内容也会被记录，就会出现问题
+                        //清理日志，如果你这里做了system print，那么你输出的内容也会被记录，就会出现问题
                         handler.handLine(line);
                     }
                 } catch (Exception e) {
