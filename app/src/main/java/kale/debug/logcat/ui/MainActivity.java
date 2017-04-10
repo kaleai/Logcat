@@ -1,12 +1,11 @@
 package kale.debug.logcat.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import kale.debug.log.ui.DebugLogActivity;
+import kale.debug.log.ui.LogActivity;
 import kale.debug.logcat.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,12 +24,11 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                printLog();
-                startActivity(new Intent(MainActivity.this, DebugLogActivity.class));
+                Log.d(TAG, "onClick: click");
+                LogActivity.startLogAct(MainActivity.this);
             }
         });
-
-        startActivity(new Intent(this, DebugLogActivity.class));
+        LogActivity.startLogAct(MainActivity.this);
     }
 
     private void printLog() {
