@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <title>Android Debug Database</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery.min.js"></script>
+    <script src="jquery.dataTables.min.js"></script>
+    <script src="dataTables.bootstrap.js"></script>
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="dataTables.bootstrap.css">
+
+    <script type="text/javascript" language="javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" src="jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="dataTables.bootstrap.js"></script>
+</head>
+
+<body>
+<script src="app.js"></script>
+
+<div class="navbar-header">
+    <a class="navbar-brand" href="index.html">Android LogCat</a>
+</div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="https://github.com/tianzhijiexian/LogCat"
+               target="_blank">Github</a>
+        </li>
+        <li>
+            <a href="http://weibo.com/shark0017/"
+               target="_blank">Weibo</a>
+        </li>
+        <li>
+            <a href="https://github.com/tianzhijiexian/Android-Best-Practices"
+               target="_blank">Kale's Blog</a>
+        </li>
+    </ul>
+</div>
+
+<div id="parent-data-div" class="col-sm-8" >
+<br>
+<br>
+    <div class="panel panel-info" style="float:right">
+         <button id="selected-db-info" type="button" onclick="loadLogListByLev()" class="btn btn-info">
+            refresh
+    </button>
+</div>
+
+<form id="rates" name="log_lev_radio">
+  <input type="radio" id="verbose" name="rate" value="V" checked="checked"> VERBOSE
+  <input type="radio" id="debug" name="rate" value="D"> DEBUG
+  <input type="radio" id="info" name="rate" value="I" > INFO
+  <input type="radio" id="warn" name="rate" value="W"> WARN
+  <input type="radio" id="error" name="rate" value="E"> ERROR
+</form>
+
+<br>
+
+<table id="log-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>time</th>
+        <th>content</th>
+    </tr>
+    </thead>
+
+    <tbody id="db-data-div">
+
+    </tbody>
+
+</table>
+
+</body>
+</html>

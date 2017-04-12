@@ -17,7 +17,7 @@ import kale.debug.log.constant.Options;
  * @author Jack Tony
  * @date 2015/12/4
  */
-public class LogCat {
+public class LogCatCmd {
 
     private static final List<String> DEFAULT_COMMAND = new ArrayList<>();
 
@@ -27,25 +27,25 @@ public class LogCat {
 
     private List<String> commandLine;
 
-    private static LogCat mInstance = null;
+    private static LogCatCmd mInstance = null;
 
-    public static LogCat getInstance() {
+    public static LogCatCmd getInstance() {
         if (mInstance == null) {
-            mInstance = new LogCat();
+            mInstance = new LogCatCmd();
         }
         return mInstance;
     }
 
-    private LogCat() {
+    private LogCatCmd() {
         commandLine = new ArrayList<>(DEFAULT_COMMAND);
     }
 
-    public LogCat options(Options options) {
+    public LogCatCmd options(Options options) {
         commandLine.add(LogParser.parse(options));
         return this;
     }
 
-    public LogCat recentLines(@IntRange(from = 0) int lineSize) {
+    public LogCatCmd recentLines(@IntRange(from = 0) int lineSize) {
         commandLine.add("-t");
         commandLine.add(String.valueOf(lineSize));
         return this;
@@ -55,7 +55,7 @@ public class LogCat {
      * @param tag log的tag
      */
     @CheckResult
-    public LogCat filter(@NonNull String tag) {
+    public LogCatCmd filter(@NonNull String tag) {
         return filter(tag, Level.VERBOSE); // 默认显示所有信息
     }
 
@@ -66,12 +66,11 @@ public class LogCat {
      * @param lev log的级别
      */
     @CheckResult
-    public LogCat filter(@Nullable String tag, Level lev) {
+    public LogCatCmd filter(@Nullable String tag, Level lev) {
         String levStr = LogParser.parse(lev);
 
         if (!TextUtils.isEmpty(tag)) {
             commandLine.add(tag.trim() + ":" + levStr);
-           // Log.d("ddd", "filter: " + commandLine.get(commandLine.size()-1));
             commandLine.add("*:S");
         } else {
             commandLine.add("*:" + levStr);
@@ -80,14 +79,14 @@ public class LogCat {
     }
 
     @CheckResult
-    public LogCat withTime() {
+    public LogCatCmd withTime() {
         commandLine.add("-v");
         commandLine.add("time");
         return this;
     }
 
     @CheckResult
-    public LogCat clear() {
+    public LogCatCmd clear() {
         commandLine.add("-c");
         return this;
     }

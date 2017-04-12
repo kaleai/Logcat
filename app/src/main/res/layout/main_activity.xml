@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.MainActivity"
+    android:padding="16dp"
     >
 
     <Button
@@ -13,6 +14,22 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="show logActivity"
+        />
+    
+    <Button
+        android:id="@+id/add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:text="click"
+        />
+    
+    <TextView
+        android:id="@+id/ip_address_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:textSize="15sp"
         />
     
 </FrameLayout>

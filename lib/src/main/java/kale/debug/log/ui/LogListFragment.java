@@ -1,6 +1,7 @@
 package kale.debug.log.ui;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.os.Bundle;
@@ -14,13 +15,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import kale.debug.log.LogCat;
-import kale.debug.log.LogLoader;
 import kale.debug.log.LogParser;
 import kale.debug.log.R;
 import kale.debug.log.constant.Level;
-import kale.debug.log.constant.Options;
 import kale.debug.log.model.LogBean;
+import kale.debug.log.util.Action1;
 import kale.debug.log.util.LogBeanUtil;
 
 /**
@@ -36,8 +35,6 @@ public class LogListFragment extends Fragment {
     private ListView listView;
 
     private ProgressBar loadingPb;
-
-    private final List<LogBean> data = new ArrayList<>();
 
     private String tag;
 
@@ -67,21 +64,20 @@ public class LogListFragment extends Fragment {
         listView.setEmptyView(root.findViewById(R.id.empty_view));
 
         updateLog(null);
-        listView.setAdapter(new LogAdapter(data));
+        final LogAdapter adapter = new LogAdapter(new ArrayList<LogBean>());
+        listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(LogDetailActivity.withIntent(getActivity(), data.get(position)));
+                startActivity(LogDetailActivity.withIntent(getActivity(), adapter.getData().get(position)));
             }
         });
         return root;
     }
 
-    private LogBean oldLogBean;
-
     public void clearData() {
-        data.clear();
         LogAdapter adapter = (LogAdapter) listView.getAdapter();
+        adapter.setData(Collections.EMPTY_LIST);
         adapter.notifyDataSetChanged();
     }
 
@@ -98,31 +94,11 @@ public class LogListFragment extends Fragment {
         this.tag = tag;
         loadingPb.setVisibility(View.VISIBLE);
 
-        data.clear();
-        Process process = LogCat.getInstance()
-                .options(Options.DUMP)
-                .withTime()
-                .recentLines(1000)
-                .filter(tag, lev)
-                .commit();
-
-        LogLoader.load(process, new LogLoader.LoadHandler() {
+        LogBeanUtil.loadLogBeanList(tag, lev, new Action1<List<LogBean>>() {
             @Override
-            public void handLine(String line) {
-                LogBean logBean = LogBeanUtil.createBeanFromLine(line);
-                if (logBean != null) {
-                    if (oldLogBean != null && logBean.msg.startsWith(" \tat ")) {
-                        oldLogBean.msg += "\n" + logBean.msg;
-                    } else {
-                        oldLogBean = logBean;
-                        data.add(logBean);
-                    }
-                }
-            }
-
-            @Override
-            public void onComplete() {
+            public void onComplete(List<LogBean> list) {
                 LogAdapter adapter = (LogAdapter) listView.getAdapter();
+                adapter.setData(list);
                 loadingPb.setVisibility(View.INVISIBLE);
                 adapter.notifyDataSetChanged();
             }

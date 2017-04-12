@@ -17,7 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import kale.debug.log.LogCat;
+import kale.debug.log.LogCatCmd;
 import kale.debug.log.LogFileDivider;
 import kale.debug.log.LogLoader;
 import kale.debug.log.LogParser;
@@ -104,7 +104,7 @@ public class LogActivity extends AppCompatActivity {
             return true;
         } else {
             if (i == R.id.action_clear) {
-                LogCat.getInstance().clear().commit();
+                LogCatCmd.getInstance().clear().commit();
                 for (LogListFragment fragment : mFragments) {
                     fragment.clearData();
                 }
@@ -118,7 +118,7 @@ public class LogActivity extends AppCompatActivity {
     private void shareLogFile(LogListFragment fragment) {
         String tag = fragment.getLogTag();
         Level lev = fragment.getLogLev();
-        Process process = LogCat.getInstance()
+        Process process = LogCatCmd.getInstance()
                 .options(Options.DUMP)
                 .withTime()
                 .recentLines(1000)

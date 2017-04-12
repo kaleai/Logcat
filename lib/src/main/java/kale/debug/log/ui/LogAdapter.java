@@ -43,6 +43,14 @@ public class LogAdapter extends BaseAdapter {
         this.data = data;
     }
 
+    public void setData(List<LogBean> data) {
+        this.data = data;
+    }
+
+    public List<LogBean> getData() {
+        return data;
+    }
+
     @Override
     public int getCount() {
         return data.size();
