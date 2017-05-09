@@ -32,7 +32,7 @@ public final class NetworkUtils {
         // This class in not publicly instantiable
     }
 
-    public static String getAddressLog(Context context, int port) {
+    public static String getWebLogcatAddress(Context context, int port) {
         return "Open http://" + getAddress(context, port) + "/logcat.html"+ " in your browser";
     }
 

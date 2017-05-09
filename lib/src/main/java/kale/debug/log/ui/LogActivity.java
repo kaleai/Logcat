@@ -4,9 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -38,10 +36,6 @@ public class LogActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 
     private List<LogListFragment> mFragments;
-
-    public static void startLogAct(Activity activity) {
-        activity.startActivity(new Intent(activity, LogActivity.class));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
