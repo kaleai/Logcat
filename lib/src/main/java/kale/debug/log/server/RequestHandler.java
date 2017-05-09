@@ -83,10 +83,6 @@ public class RequestHandler {
             // Output stream that we send the response to
             output = new PrintStream(socket.getOutputStream());
 
-            if (route == null || route.isEmpty()) {
-                route = "welcome.html";
-            }
-
             byte[] bytes;
 
             if (route.startsWith("getLogList")) {

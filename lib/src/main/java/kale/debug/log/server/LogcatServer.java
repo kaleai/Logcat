@@ -32,9 +32,9 @@ import java.net.SocketException;
 import android.content.Context;
 import android.util.Log;
 
-public class ClientServer implements Runnable {
+public class LogcatServer implements Runnable {
 
-    private static final String TAG = "ClientServer";
+    private static final String TAG = "LogcatServer";
 
     private final int mPort;
 
@@ -44,7 +44,7 @@ public class ClientServer implements Runnable {
 
     private final RequestHandler mRequestHandler;
 
-    public ClientServer(Context context, int port) {
+    public LogcatServer(Context context, int port) {
         mRequestHandler = new RequestHandler(context);
         mPort = port;
     }
@@ -64,6 +64,10 @@ public class ClientServer implements Runnable {
         } catch (Exception e) {
             Log.e(TAG, "Error closing the server socket.", e);
         }
+    }
+
+    public boolean isRunning() {
+        return mIsRunning;
     }
 
     @Override
