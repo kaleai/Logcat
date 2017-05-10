@@ -83,9 +83,11 @@ public class RequestHandler {
             // Output stream that we send the response to
             output = new PrintStream(socket.getOutputStream());
 
-            byte[] bytes;
+            final byte[] bytes;
 
-            if (route.startsWith("getLogList")) {
+            if (route == null) {
+                bytes = null;
+            } else if (route.startsWith("getLogList")) {
                 final String response = getLogListResponse();
                 bytes = response != null ? response.getBytes() : null;
             } else if (route.startsWith("getListByLev")) {

@@ -19,10 +19,13 @@ public class Logcat {
     private static LogcatServer logcatServer;
 
     public static void startLogCatServer(Context context) {
-        logcatServer = new LogcatServer(context, 8080);
-        logcatServer.start();
+        startLogCatServer(context, 8819);
+    }
 
-        Log.d(TAG, NetworkUtils.getWebLogcatAddress(context, 8080));
+    public static void startLogCatServer(Context context, int port) {
+        logcatServer = new LogcatServer(context, port);
+        logcatServer.start();
+        Log.d(TAG, NetworkUtils.getWebLogcatAddress(context, port));
     }
 
     public static void shutDownServer() {
