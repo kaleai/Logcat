@@ -70,6 +70,10 @@ public class LogcatServer implements Runnable {
         return mIsRunning;
     }
 
+    public int getPort() {
+        return mPort;
+    }
+
     @Override
     public void run() {
         try {

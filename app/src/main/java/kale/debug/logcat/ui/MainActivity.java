@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Logcat.startLogCatServer(this);
-        ((TextView) findViewById(R.id.ip_address_tv)).setText("http://" + NetworkUtils.getAddress(this, 8080) + "/logcat.html");
+        ((TextView) findViewById(R.id.ip_address_tv)).setText(NetworkUtils.getAddress(this));
     }
 
     private void printLog() {

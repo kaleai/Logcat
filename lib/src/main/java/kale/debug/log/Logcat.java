@@ -39,4 +39,8 @@ public class Logcat {
     public static void jumpToLogcatActivity(Context context) {
         context.startActivity(new Intent(context, LogActivity.class));
     }
+
+    public static LogcatServer getLogcatServer() {
+        return logcatServer;
+    }
 }
