@@ -19,15 +19,15 @@ Logcat.startLogCatServer(context);
 Add it in your root build.gradle at the end of repositories:  
 ```  
 repositories {
-	maven {
-		url "https://jitpack.io"
-	}
+    maven {
+	url "https://jitpack.io"
+    }
 }
 ```   
 Add the dependency:     
 > compile 'com.github.tianzhijiexian:Logcat:[Latest release](https://github.com/tianzhijiexian/Logcat/releases)'
 
-###More Detail  
+### More Detail  
 You can see more detail in [Logcat.java](https://github.com/tianzhijiexian/Logcat/blob/master/lib/src/main/java/kale/debug/log/LogCatCmd.java)
 
 ### Developer   
