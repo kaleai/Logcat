@@ -22,7 +22,7 @@ package kale.debug.log.util;
 import android.content.Context;
 import android.net.wifi.WifiManager;
 
-import kale.debug.log.Logcat;
+import kale.debug.log.server.LogcatService;
 
 /**
  * Created by amitshekhar on 15/11/16.
@@ -30,12 +30,8 @@ import kale.debug.log.Logcat;
 
 public final class NetworkUtils {
 
-    private NetworkUtils() {
-        // This class in not publicly instantiable
-    }
-
     public static String getWebLogcatAddress(Context context) {
-        return getWebLogcatAddress(context, Logcat.getLogcatServer().getPort());
+        return getWebLogcatAddress(context, LogcatService.getPort());
     }
 
     public static String getWebLogcatAddress(Context context, int port) {

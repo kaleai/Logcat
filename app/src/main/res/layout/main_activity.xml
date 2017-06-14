@@ -21,7 +21,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
-        android:text="click"
+        android:layout_marginTop="60dp"
+        android:text="print log"
+        />
+    
+    <Button
+        android:id="@+id/crash_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:text="crash!!!"
         />
     
     <TextView
@@ -30,6 +39,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:textSize="15sp"
+        
+        tools:text="web"
         />
     
 </FrameLayout>

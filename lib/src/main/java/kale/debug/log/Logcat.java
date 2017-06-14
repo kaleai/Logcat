@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import kale.debug.log.server.LogcatServer;
+import kale.debug.log.server.LogcatService;
 import kale.debug.log.ui.LogActivity;
 import kale.debug.log.util.NetworkUtils;
 
@@ -16,31 +16,27 @@ public class Logcat {
 
     private static final String TAG = "Logcat";
 
-    private static LogcatServer logcatServer;
+    public static final int LOGCAT_PORT = 8819;
 
     public static void startLogCatServer(Context context) {
-        startLogCatServer(context, 8819);
+        startLogCatServer(context, LOGCAT_PORT);
     }
 
     public static void startLogCatServer(Context context, int port) {
-        logcatServer = new LogcatServer(context, port);
-        logcatServer.start();
+        LogcatService.start(context, port);
         Log.d(TAG, NetworkUtils.getWebLogcatAddress(context, port));
     }
 
-    public static void shutDownServer() {
-        logcatServer.stop();
+    public static void shutDownServer(Context context) {
+        LogcatService.shutDown(context);
     }
 
     public static boolean isServerRunning() {
-        return logcatServer != null && logcatServer.isRunning();
+        return LogcatService.isRunning();
     }
 
     public static void jumpToLogcatActivity(Context context) {
         context.startActivity(new Intent(context, LogActivity.class));
     }
 
-    public static LogcatServer getLogcatServer() {
-        return logcatServer;
-    }
 }

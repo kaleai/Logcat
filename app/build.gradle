@@ -23,5 +23,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile project(':lib')
+    compile 'com.amitshekhar.android:debug-db:1.0.0'
+
     compile 'com.github.munix:LogcatTextView:1.0'
 }

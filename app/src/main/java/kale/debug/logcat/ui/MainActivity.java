@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.amitshekhar.DebugDB;
+
 import kale.debug.log.Logcat;
 import kale.debug.log.util.NetworkUtils;
 import kale.debug.logcat.R;
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
+        DebugDB.initialize(this);
 
         Log.e(TAG, "onCreate: first create");
 
@@ -37,7 +41,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 printLog();
+                int result = Log.d(TAG, "onClick: ");
                 Logcat.jumpToLogcatActivity(MainActivity.this);
+            }
+        });
+
+        String nullStr = null;
+        try {
+            nullStr.substring(0, 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        findViewById(R.id.crash_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String sss = null;
+
+                sss.substring(0, 1);
             }
         });
 
@@ -50,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: kale");
         Log.i("kale", "Info message~");
         Log.w(TAG, "kale", new RuntimeException("exp"));
+        Log.w(TAG, "one\ntwo\nthree");
         Log.e(TAG, "Large Data:\n"
                 + "Never give up,"
                 + "Never lose hope."

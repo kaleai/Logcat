@@ -1,15 +1,21 @@
 # Logcat  
-[![](https://jitpack.io/v/tianzhijiexian/Logcat.svg)](https://jitpack.io/#tianzhijiexian/Logcat)    
-logcat tool   
----
-###Demo   
-![](./images/demo01.png)
+[![](https://jitpack.io/v/tianzhijiexian/Logcat.svg)](https://jitpack.io/#tianzhijiexian/Logcat)     
 
-###Usage   
+### Phone
+![](./images/phone.png)
+
 ```JAVA
-  startActivity(new Intent(context, LogActivity.class));
+Logcat.jumpToLogcatActivity(context);
 ```
-###Download   
+
+### Web
+![](./images/pcweb.png)
+  
+```JAVA
+Logcat.startLogCatServer(context);
+```
+
+### Download   
 Add it in your root build.gradle at the end of repositories:  
 ```  
 repositories {
@@ -22,7 +28,7 @@ Add the dependency:
 > compile 'com.github.tianzhijiexian:Logcat:[Latest release](https://github.com/tianzhijiexian/Logcat/releases)'
 
 ###More Detail  
-You can see more detail in [Logcat.java](https://github.com/tianzhijiexian/Logcat/blob/master/lib/src/main/java/kale/debug/log/LogCat.java)
+You can see more detail in [Logcat.java](https://github.com/tianzhijiexian/Logcat/blob/master/lib/src/main/java/kale/debug/log/LogCatCmd.java)
 
 ### Developer   
 ![](https://avatars3.githubusercontent.com/u/9552155?v=3&s=460)
@@ -31,7 +37,7 @@ Jack Tony: <developer_kale@foxmail.com>
 
 ### License
 
-    Copyright 2016 Jack Tony
+    Copyright 2016-2019 Jack Tony
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

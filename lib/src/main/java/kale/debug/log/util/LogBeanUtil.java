@@ -34,8 +34,16 @@ public class LogBeanUtil {
             public void handLine(String line) {
                 LogBean logBean = LogBeanUtil.createBeanFromLine(line);
                 if (logBean != null) {
-                    if (oldLogBean != null && logBean.msg.startsWith(" \tat ")) {
-                        oldLogBean.msg += "\n" + logBean.msg;
+                    String msg = logBean.msg;
+                    if (msg.contains("FATAL EXCEPTION")
+                            || msg.startsWith(" \t... ")
+                            || msg.startsWith(" Process: ")) {
+                        return;
+                    }
+
+                    if (oldLogBean != null && msg.startsWith(" \tat ")) {
+//                        oldLogBean.msg += "\n" + msg.replace(" \t", "");
+                        oldLogBean.msg += "\n\t\t" + msg;
                     } else {
                         oldLogBean = logBean;
                         list.add(logBean);
