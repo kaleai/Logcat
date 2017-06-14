@@ -94,7 +94,7 @@ public class RequestHandler {
                 final String response = getLogListByLev(route);
                 bytes = response != null ? response.getBytes() : null;
             } else {
-                bytes = NetUtil.loadContent(route, mAssets);
+                bytes = NetUtil.loadContent("logcat/" + route, mAssets);
             }
 
             if (null == bytes) {

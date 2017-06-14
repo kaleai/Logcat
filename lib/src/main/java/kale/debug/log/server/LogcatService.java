@@ -58,8 +58,6 @@ public class LogcatService extends IntentService {
             mPort = intent.getIntExtra(KEY_PORT, Logcat.LOGCAT_PORT);
         }
 
-        Log.d(TAG, "onHandleIntent: =======");
-
         try {
             mServerSocket = new ServerSocket(mPort);
             while (mIsRunning) {
