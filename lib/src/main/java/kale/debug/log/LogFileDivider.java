@@ -1,9 +1,11 @@
 package kale.debug.log;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.v4.content.FileProvider;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -105,11 +107,13 @@ public class LogFileDivider {
         activity.startActivity(intent);
     }
 
-    public static void shareFile(Activity activity,File file) {
+    public static void shareFile(Context context, File file) {
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
         sendIntent.setType("text/plain");
-        sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-        activity.startActivity(sendIntent);
+        Uri uri = FileProvider.getUriForFile(context,
+                context.getPackageName() + ".logcat.provider", file);
+        sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        context.startActivity(sendIntent);
     }
 
 }
