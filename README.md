@@ -27,6 +27,25 @@ repositories {
 Add the dependency:     
 > compile 'com.github.tianzhijiexian:Logcat:[Latest release](https://github.com/tianzhijiexian/Logcat/releases)'
 
+Add following code in your AndroidManifest.xml
+
+```xml
+<application>
+    <provider
+        android:authorities="${applicationId}.logcat.provider"
+        android:name="kale.debug.log.LogcatFileProvider"
+        android:exported="false"
+        android:grantUriPermissions="true"
+        >
+
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/provider_paths"/>
+
+    </provider>
+</application>
+```
+
 ### More Detail  
 You can see more detail in [Logcat.java](https://github.com/tianzhijiexian/Logcat/blob/master/lib/src/main/java/kale/debug/log/LogCatCmd.java)
 
