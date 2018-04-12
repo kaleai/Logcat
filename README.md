@@ -1,16 +1,14 @@
 # Logcat  
 [![](https://jitpack.io/v/tianzhijiexian/Logcat.svg)](https://jitpack.io/#tianzhijiexian/Logcat)     
 
-### Phone
-![](./images/phone.png)
+## 打开log界面
 
 ```JAVA
 Logcat.jumpToLogcatActivity(context);
 ```
+  
+## 运行log服务
 
-### Web
-![](./images/pcweb.png)
-  
 ```JAVA
 Logcat.startLogCatServer(context);
 ```
@@ -27,27 +25,13 @@ repositories {
 Add the dependency:     
 > compile 'com.github.tianzhijiexian:Logcat:[Latest release](https://github.com/tianzhijiexian/Logcat/releases)'
 
-Add following code in your AndroidManifest.xml
-
-```xml
-<application>
-    <provider
-        android:authorities="${applicationId}.logcat.provider"
-        android:name="kale.debug.log.LogcatFileProvider"
-        android:exported="false"
-        android:grantUriPermissions="true"
-        >
-
-        <meta-data
-            android:name="android.support.FILE_PROVIDER_PATHS"
-            android:resource="@xml/provider_paths"/>
-
-    </provider>
-</application>
-```
-
 ### More Detail  
 You can see more detail in [Logcat.java](https://github.com/tianzhijiexian/Logcat/blob/master/lib/src/main/java/kale/debug/log/LogCatCmd.java)
+
+### Phone
+![](./images/phone.png)
+### Web
+![](./images/pcweb.png)
 
 ### Developer   
 ![](https://avatars3.githubusercontent.com/u/9552155?v=3&s=460)
