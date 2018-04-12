@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         Log.e(TAG, "onCreate: first create");
 
-        printLog();
-
         findViewById(R.id.add_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +61,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Logcat.startLogCatServer(this);
+
         ((TextView) findViewById(R.id.ip_address_tv)).setText(NetworkUtils.getWebLogcatAddress(this));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Logcat.shutDownServer(this);
     }
 
     private void printLog() {

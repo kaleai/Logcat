@@ -24,7 +24,7 @@ public class Logcat {
 
     public static void startLogCatServer(Context context, int port) {
         LogcatService.start(context, port);
-        Log.d(TAG, NetworkUtils.getWebLogcatAddress(context, port));
+        Log.d(TAG, "http://" + NetworkUtils.getWebLogcatAddress(context, port));
     }
 
     public static void shutDownServer(Context context) {

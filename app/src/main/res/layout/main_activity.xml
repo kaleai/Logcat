@@ -4,43 +4,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity"
     android:padding="16dp"
+    tools:context=".ui.MainActivity"
     >
 
     <Button
         android:id="@+id/btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="show logActivity"
         />
-    
+
     <Button
         android:id="@+id/add_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
         android:layout_marginTop="60dp"
-        android:text="print log"
+        android:text="add a log"
         />
-    
+
     <Button
         android:id="@+id/crash_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
         android:text="crash!!!"
         />
-    
+
     <TextView
         android:id="@+id/ip_address_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:textSize="15sp"
-        
+
         tools:text="web"
         />
-    
+
 </FrameLayout>
