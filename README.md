@@ -1,19 +1,7 @@
 # Logcat  
 [![](https://jitpack.io/v/tianzhijiexian/Logcat.svg)](https://jitpack.io/#tianzhijiexian/Logcat)     
 
-## 打开log界面
-
-```JAVA
-Logcat.jumpToLogcatActivity(context);
-```
-  
-## 运行log服务
-
-```JAVA
-Logcat.startLogCatServer(context);
-```
-
-### Download   
+### Add to your project   
 Add it in your root build.gradle at the end of repositories:  
 ```  
 repositories {
@@ -25,8 +13,18 @@ repositories {
 Add the dependency:     
 > compile 'com.github.tianzhijiexian:Logcat:[Latest release](https://github.com/tianzhijiexian/Logcat/releases)'
 
-### More Detail  
-You can see more detail in [Logcat.java](https://github.com/tianzhijiexian/Logcat/blob/master/lib/src/main/java/kale/debug/log/LogCatCmd.java)
+## Use Logcat
+
+```JAVA
+Logcat.jumpToLogcatActivity(context);
+```
+
+```JAVA
+Logcat.startLogCatServer(context);
+```
+
+### More Details  
+You can see more detail in [LogcatCmd.java](https://github.com/tianzhijiexian/Logcat/blob/master/lib/src/main/java/kale/debug/log/LogCatCmd.java)
 
 ### Phone
 ![](./images/phone.png)
